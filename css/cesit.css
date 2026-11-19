@@ -1,0 +1,26 @@
+/* css/cesit.css — yolculuk çeşitliliği (rota koşulları) stilleri: koşul rozeti, özel sipariş çipi, acele hamle rozeti, prim satırları.
+   Arayüz dili css/oyun.css :root değişkenleriyle (cam hap, pirinç kenar, deniz/yeşil/kırmızı tonlar). */
+/* yükleme ekranı: koşul rozeti (ikon + ad), rota satırında; .dk-pill'in cam hapı + pirinç kenar */
+.dk-pill.kosul{box-shadow:inset 0 1px 0 rgba(255,255,255,.22),inset 0 0 0 1.5px var(--pirinc-2),var(--golge-1)}
+.dk-pill.kosul small{color:var(--altin-1);font-weight:900}
+.dk-pill.kosul .k-emo{font-style:normal;font-size:13px;line-height:1}
+.dk-pill.k-acele{background:linear-gradient(180deg,var(--deniz-1),var(--deniz-3))}
+.dk-pill.k-porselen{background:linear-gradient(180deg,rgba(64,104,170,.95),rgba(24,52,104,.95))}
+.dk-pill.k-eski{background:linear-gradient(180deg,var(--ahsap-1),var(--ahsap-3))}
+.dk-pill.k-kilit{background:linear-gradient(180deg,rgba(92,100,116,.95),rgba(40,46,58,.95))}
+.dk-pill.k-buyuk{background:linear-gradient(180deg,rgba(30,124,112,.95),rgba(10,70,64,.95))}
+/* özel sipariş çipi: altın hap; tutunca yeşil, kaçınca kırmızı ve üstü çizili */
+.dk-pill.ozel{background:linear-gradient(180deg,var(--altin-2),var(--altin-3));color:var(--altin-yazi);text-shadow:0 1px 0 rgba(255,240,190,.6);
+  box-shadow:inset 0 1px 0 rgba(255,252,225,.8),inset 0 0 0 1.5px var(--altin-kenar),var(--golge-1)}
+.dk-pill.ozel b{font-weight:900}
+.dk-pill.ozel.ok{background:linear-gradient(180deg,var(--yesil-1),var(--yesil-3));color:#fff;text-shadow:0 1px 1px rgba(0,40,10,.7);box-shadow:inset 0 1px 0 rgba(220,255,225,.6),inset 0 0 0 1.5px var(--yesil-kenar),var(--golge-1)}
+.dk-pill.ozel.bad{background:linear-gradient(180deg,var(--kirmizi-1),var(--kirmizi-3));color:#fff;text-shadow:0 1px 1px rgba(70,10,0,.7);text-decoration:line-through;text-decoration-thickness:1.5px;
+  box-shadow:inset 0 0 0 1.5px var(--kirmizi-kenar),var(--golge-1)}
+/* acele yolculukta hamle madalyonu deniz mavisi (az kalınca yine kırmızı) */
+.mv.acele:not(.low){background:radial-gradient(circle at 50% 30%,#e6f7fb 0%,#7fc7da 38%,var(--deniz-1) 70%,var(--deniz-3) 100%);border-color:var(--deniz-kenar);color:#06303c;
+  box-shadow:inset 0 0 0 2px #c9eef6,inset 0 0 0 4.5px rgba(17,78,99,.55),inset 0 0 0 5.5px rgba(220,245,250,.6),inset 0 -6px 8px rgba(7,43,55,.35),0 3px 0 #04222c,0 6px 14px rgba(0,20,30,.4)}
+.mv.acele:not(.low) small,.mv.acele:not(.low) b{text-shadow:0 1px 0 rgba(230,250,255,.85)}
+/* yükleme sonucu ve satış: koşul satırları (prim yeşil, tutmayan soluk, kırık porselen .warn ile kırmızı) */
+.mlist li.k-ok{color:var(--yesil-3)}
+.mlist li.k-ok b{color:var(--yesil-2)}
+.mlist li.k-yok{color:var(--murekkep-2);opacity:.8}

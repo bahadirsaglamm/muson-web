@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Muson: Trade Puzzle</title>
+<link rel="icon" type="image/png" sizes="192x192" href="assets/ikon-192.png">
+<style>
+html,body{margin:0;height:100%;overflow:hidden;background:#0b3b4a;user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;touch-action:manipulation}
+#arka{position:fixed;inset:-30px;background:#0b3b4a url(assets/ui/harita_bg.jpg) center/cover no-repeat;filter:blur(12px) brightness(.72)}
+#oyun{position:absolute;left:0;top:0;border:0;display:block;transform-origin:0 0;background:#0f4f60;box-shadow:0 0 48px rgba(0,0,0,.5)}
+</style>
+</head>
+<body>
+<div id="arka"></div>
+<iframe id="oyun" src="oyun.html" title="Muson" allow="autoplay; fullscreen"></iframe>
+<script>
+(function(){
+  // YATAY: en/boy bu orandan büyükse oyun yatay düzende; mantıksal yükseklik H_MIN–H_MAX, en çok EN_ORAN genişlik
+  var f=document.getElementById('oyun'),W0=394,H0=700,YATAY=1.2,H_MIN=540,H_MAX=720,EN_ORAN=2.2,olcek=1;
+  function olcekVer(s){
+    try{var g=f.contentWindow;if(!g)return;var o=+g.__OLCEK||1;g.__OLCEK=s;
+      if(Math.abs(o-s)>.001&&g.dispatchEvent)g.dispatchEvent(new Event('resize'));}catch(e){}
+  }
+  function yerles(){
+    var w=window.innerWidth,h=window.innerHeight,a=w/h;
+    if(a<0.68){f.style.cssText='left:0;top:0;width:'+w+'px;height:'+h+'px;transform:none;box-shadow:none';olcek=1;olcekVer(1);return;}
+    if(a>=YATAY){
+      var Hl=Math.round(Math.min(H_MAX,Math.max(H_MIN,h))),Wl=Math.round(Hl*Math.min(a,EN_ORAN)),s=Math.min(w/Wl,h/Hl);
+      f.style.cssText='width:'+Wl+'px;height:'+Hl+'px;left:'+((w-Wl*s)/2)+'px;top:'+((h-Hl*s)/2)+'px;transform:scale('+s+')'+(Wl*s>=w-1?';box-shadow:none':'');
+      olcek=s;olcekVer(s);return;
+    }
+    var s=Math.min(h/H0,w/W0);
+    f.style.cssText='width:'+W0+'px;height:'+H0+'px;left:'+((w-W0*s)/2)+'px;top:'+((h-H0*s)/2)+'px;transform:scale('+s+')';
+    olcek=1;olcekVer(1);
+  }
+  window.addEventListener('resize',yerles);yerles();
+  f.addEventListener('load',function(){olcekVer(olcek);try{f.contentWindow.focus();}catch(e){}});
+})();
+</script>
+</body>
+</html>

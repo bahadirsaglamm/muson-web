@@ -1,0 +1,174 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no,viewport-fit=cover">
+<title>Muson</title>
+<meta name="theme-color" content="#0f4c5c">
+<meta name="description" content="Muson: sail from port to port, pack your hold, sink pirates and build your company town." data-t-content="meta.desc">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Muson">
+<link rel="apple-touch-icon" href="assets/ikon-180.png">
+<link rel="icon" type="image/png" sizes="192x192" href="assets/ikon-192.png">
+<link rel="stylesheet" href="css/studyo.css">
+<link rel="stylesheet" href="css/oyun.css">
+<link rel="stylesheet" href="css/cesit.css">
+<link rel="stylesheet" href="css/sirket.css">
+<!-- dil: desteklenen diller, sonra dil modülü (sözlükleri dil/<kod>.js kendisi yükler); bütün oyun betiklerinden önce -->
+<script>window.__WEB=true;(function(){try{var w=window,d=Object.getOwnPropertyDescriptor(w,'devicePixelRatio')||Object.getOwnPropertyDescriptor(Window.prototype,'devicePixelRatio');if(!d||!d.get)return;Object.defineProperty(w,'devicePixelRatio',{configurable:true,get:function(){var r=d.get.call(w)||1,o=+w.__OLCEK||1;return o>1?Math.min(3,r*o):r;}});}catch(e){}})();</script>
+<script src="dil/diller.js"></script>
+<script src="js/dil.js"></script>
+</head>
+<body>
+<div id="studyo" aria-label="IronLane Studios"><img src="assets/studyo/logo.png" alt="" onerror="this.style.display='none'"><div class="ad"><b>IRON</b>LANE</div><div class="alt">STUDIOS</div></div>
+<script src="js/studyo.js"></script>
+<div id="app">
+
+  <!-- AÇILIŞ -->
+  <section class="screen" id="scr-title">
+    <button class="gear" id="ti-ayar" aria-label="Settings" data-t-aria="settings.title"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button>
+    <div class="ti-in">
+      <div class="ti-logo" id="ti-logo"></div>
+      <h1>Muson</h1>
+      <p class="ti-sub" data-t="start.sub"></p>
+      <button class="primary" id="ti-play"></button>
+      <div class="ti-load" id="ti-load"><i id="ti-bar"></i></div>
+    </div>
+  </section>
+
+  <!-- HARİTA -->
+  <section class="screen" id="scr-map">
+    <header>
+      <div class="top m-ust"><span class="m-ad" id="m-ad"></span><span class="tr"><small class="muhurb" id="m-muhurb" role="button" data-t-aria="map.company"><i class="muhur-i"></i><span id="m-muhur">0</span></small><small class="goldb" id="m-goldb" role="button"><span id="m-gold"></span><b>+</b></small><button class="gear" id="m-ayar" aria-label="Settings" data-t-aria="settings.title"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 1 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 1 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 1 1-2.83-2.83l.06-.06a1.65 1.65 0 0 0 .33-1.82 1.65 1.65 0 0 0-1.51-1H3a2 2 0 1 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 1 1 2.83-2.83l.06.06a1.65 1.65 0 0 0 1.82.33H9a1.65 1.65 0 0 0 1-1.51V3a2 2 0 1 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 1 1 2.83 2.83l-.06.06a1.65 1.65 0 0 0-.33 1.82V9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 1 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg></button></span></div>
+      <div class="tip" id="m-tip"></div>
+    </header>
+    <div id="mapw"><div id="map-bg"></div><div id="map"><div id="route"></div></div></div>
+    <footer><button class="dark" id="m-port">🏛 <span data-t="map.company"></span><i class="k-nokta" aria-hidden="true"></i></button><button class="dark" id="m-gemi">🛠 <span data-t="map.shipyard"></span></button><button class="primary" id="m-go"></button></footer>
+  </section>
+
+  <!-- YÜKLEME (blok oyunu); üstte rıhtım sahnesi -->
+  <section class="screen stage" id="scr-sefer">
+    <canvas class="bgc" id="s-bg"></canvas>
+    <div class="scene" id="s-dock"><canvas id="s-scene"></canvas>
+      <div class="sc-top">
+        <button class="ib" id="s-map" data-t-aria="ui.map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></svg></button>
+        <button class="ib" id="s-reset" data-t-aria="ui.restart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3 3.5v5h5"/></svg></button>
+        <span class="dk-pill" id="s-title"></span>
+      </div>
+      <div class="sc-route" id="s-route"></div>
+      <div class="mv" id="s-mv"><small data-t="ui.moves"></small><b id="s-moves">0</b></div>
+      <span class="dk-pill sc-hold" id="s-hold"></span>
+      <div class="cap"><span class="pp" id="s-capp" role="button" data-t-aria="ui.captain"></span><div class="bal lf" id="s-tip"></div></div>
+    </div>
+    <div class="sbar"><span class="order" id="s-order"></span><span class="status" id="s-status"></span></div>
+    <canvas id="s-cv"></canvas>
+  </section>
+
+  <!-- KORSAN SAVAŞI -->
+  <section class="screen stage" id="scr-savas">
+    <canvas class="bgc" id="b-bg"></canvas>
+    <canvas id="b-cv"></canvas>
+    <div class="hud" id="b-hud">
+      <div class="en" id="b-en"><span class="pp big red" id="b-enp"></span><div class="en-i"><b id="b-enn"></b><small id="b-title"></small><div class="hb red"><i id="b-enbar"></i><span id="b-enhp">0/0</span></div></div></div>
+      <div class="bal up" id="b-say"></div>
+      <div class="sc-r">
+        <div class="ibs">
+          <button class="ib" id="b-map" data-t-aria="ui.map"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 4 3 6.5v13.5l6-2.5 6 2.5 6-2.5V4l-6 2.5z"/><path d="M9 4v13.5M15 6.5V20"/></svg></button>
+          <button class="ib" id="b-reset" data-t-aria="ui.restart"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 12a8.5 8.5 0 1 0 2.6-6.1"/><path d="M3 3.5v5h5"/></svg></button>
+        </div>
+        <div class="mv" id="b-mv"><small data-t="ui.moves"></small><b id="b-moves">0</b></div>
+        <span class="dk-pill" id="b-loot"><span id="b-lootv">0</span></span>
+      </div>
+      <div class="atk" id="b-atk"><small data-t="battle.attackIn"></small><b id="b-cd">0</b><small id="b-atkp"></small></div>
+      <div class="me"><span class="pp" id="b-mep" role="button" data-t-aria="ui.captain"></span><div class="hb green"><i id="b-hbar"></i><span id="b-hp">0/0</span></div><div class="bal dn" id="b-tip"></div></div>
+    </div>
+    <section id="b-gauges">
+      <div class="gauge" id="b-gb"><div class="lbl"><b id="b-blbl"></b><span id="b-bval">0/10</span></div><div class="bar"><i id="b-bbar"></i></div></div>
+      <button id="b-fire" data-sessiz disabled data-t="battle.fire"></button>
+      <div class="gauge" id="b-gv"><div class="lbl"><i class="lt" data-t="battle.evade"></i> <span id="b-vval">0/6</span></div><div class="bar"><i id="b-vbar"></i></div></div>
+    </section>
+  </section>
+
+  <!-- VARIŞ: SATIŞ -->
+  <section class="screen" id="scr-satis">
+    <div class="hero"><h1 id="t-title"></h1><small id="t-goldw"><span id="t-gold"></span></small></div>
+    <header>
+      <div class="tip" id="t-tip"></div>
+    </header>
+    <div id="t-body"></div>
+    <footer><button class="primary big" id="t-sell" data-sessiz></button></footer>
+  </section>
+
+  <!-- ŞİRKET (ekran kimliği port): üstte kasaba sahnesi, altında sıradaki inşaat ve altınla alınan işletmeler -->
+  <section class="screen" id="scr-port">
+    <div class="kasaba" id="k-sahne">
+      <div class="k-arka"></div>
+      <div class="k-zemin"></div>
+      <div class="k-yapilar" id="p-view"></div>
+      <div class="k-ust">
+        <button class="k-ad" id="k-ad" data-t-aria="port.rename"><small data-t="port.company"></small><b id="k-adyazi"></b><span id="k-unvan"></span></button>
+        <div class="k-sayac"><small class="muhurb" id="k-muhurb"><i class="muhur-i"></i><span id="k-muhur"></span></small><small class="goldb" id="p-goldb" role="button"><span id="p-gold"></span><b>+</b></small></div>
+      </div>
+    </div>
+    <div class="k-insa" id="k-insa"></div>
+    <div class="k-bas"><span data-t="port.businesses"></span> <small data-t="port.businessesHint"></small></div>
+    <div id="p-list"></div>
+    <footer><button class="dark" id="p-shop"></button><button class="primary" id="p-back" data-t="ui.toMap"></button></footer>
+  </section>
+
+  <!-- TERSANE: gemi geliştirmeleri -->
+  <section class="screen" id="scr-gemi">
+    <div class="g-hero">
+      <div class="g-top"><h1 data-t="map.shipyard"></h1><small class="goldb" id="g-goldb" role="button"><span id="g-gold"></span><b>+</b></small></div>
+      <div class="g-glint" id="g-glint"></div>
+      <div class="g-ship" id="g-ship"></div>
+      <div class="g-up" id="g-up"></div>
+      <div class="g-wave"></div>
+      <div class="g-tier" id="g-tier"></div>
+    </div>
+    <header>
+      <div class="g-info"><span><span data-t="ship.defense"></span> <b class="def" id="g-def">10</b></span><small class="tip" id="g-next"></small></div>
+    </header>
+    <div id="g-list"></div>
+    <footer><button class="dark" id="g-port">🏛 <span data-t="map.company"></span></button><button class="primary" id="g-back" data-t="ui.toMap"></button></footer>
+  </section>
+
+  <!-- MAĞAZA / HEDİYE (ODEME_ACIK ayarına göre; js/ekran-magaza.js) -->
+  <section class="screen" id="scr-magaza">
+    <div class="hero"><h1 id="z-baslik"></h1><small><span id="z-gold"></span></small></div>
+    <div id="z-list"></div>
+    <footer><button class="primary" id="z-back" data-t="ui.back"></button></footer>
+  </section>
+
+</div>
+<div id="voyage"><canvas id="v-cv"></canvas></div>
+<div id="modal"><div class="card" id="card"></div></div>
+<div id="safe-probe"></div>
+<div id="k-tost" aria-live="polite"></div>
+
+<script src="js/mantik-sefer.js"></script>
+<script src="js/mantik-savas.js"></script>
+<script src="js/mantik-oyun.js"></script>
+<script src="js/mantik-sirket.js"></script>
+<script src="js/ortak.js"></script>
+<script src="js/varlik.js"></script>
+<script src="js/ses.js"></script>
+<script src="js/odeme-magaza.js"></script>
+<script src="js/yerlesim.js"></script>
+<script src="js/ekran-yol.js"></script>
+<script src="js/akis.js"></script>
+<script src="js/ekran-acilis.js"></script>
+<script src="js/ekran-harita.js"></script>
+<script src="js/ekran-liman.js"></script>
+<script src="js/ekran-gemi.js"></script>
+<script src="js/ekran-magaza.js"></script>
+<script src="js/ekran-rihtim.js"></script>
+<script src="js/ekran-yukleme.js"></script>
+<script src="js/ekran-savas.js"></script>
+<script src="js/ekran-satis.js"></script>
+<script src="js/kanca.js"></script>
+<script src="js/ana.js"></script>
+</body>
+</html>
